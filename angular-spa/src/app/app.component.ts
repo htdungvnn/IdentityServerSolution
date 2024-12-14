@@ -5,10 +5,13 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
   selector: 'app-root',
   template: `
     <h1>Angular 19 SPA</h1>
-    <button  @if="!isAuthenticated" (click)="login()">Login</button>
-    <button  @if="isAuthenticated" (click)="logout()">Logout</button>
+    @if(isAuthenticated){
+    <button (click)="login()">Login</button>
+    } @else{
+    <button (click)="logout()">Logout</button>
+    }
   `,
-  standalone: true
+  standalone: true,
 })
 export class AppComponent implements OnInit {
   private readonly oidcSecurityService = inject(OidcSecurityService);
