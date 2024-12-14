@@ -10,6 +10,7 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
     <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
   `,
   standalone: true,
+  imports: [CommonModule],
 })
 export class AppComponent implements OnInit {
   private readonly oidcSecurityService = inject(OidcSecurityService);
