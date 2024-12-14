@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "tslint": "^5.20.1",
+    "tslint-angular": "^3.0.3"
+  }
+}

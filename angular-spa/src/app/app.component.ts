@@ -5,8 +5,8 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
   selector: 'app-root',
   template: `
     <h1>Angular 19 SPA</h1>
-    <button *ngIf="!isAuthenticated" (click)="login()">Login</button>
-    <button *ngIf="isAuthenticated" (click)="logout()">Logout</button>
+    <button  @if="!isAuthenticated" (click)="login()">Login</button>
+    <button  @if="isAuthenticated" (click)="logout()">Logout</button>
   `,
   standalone: true
 })
