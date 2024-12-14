@@ -95,7 +95,6 @@
       }
     }
   },
-  "defaultProject": "angular-spa",
   "cli": {
     "analytics": "9bdd2bf3-b7f6-47d8-96da-dfb4ab48800f"
   }
