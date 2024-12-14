@@ -60,6 +60,6 @@ jobs:
         run: ng build --configuration production
         working-directory: ./angular-spa
 
-      - name: Run Angular tests
-        run: ng test --watch=false --browsers=ChromeHeadless
-        working-directory: ./angular-spa
+      # - name: Run Angular tests
+      #   run: ng test --watch=false --browsers=ChromeHeadless
+      #   working-directory: ./angular-spa

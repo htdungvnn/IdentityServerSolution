@@ -10,4 +10,5 @@ RUN npm run build -- --configuration production
 # Stage 2: Serve the Angular app with Nginx
 FROM nginx:latest
 COPY --from=build /app/dist/angular-spa /usr/share/nginx/html
+COPY ./nginx.conf /etc/nginx/nginx.conf
 EXPOSE 80
