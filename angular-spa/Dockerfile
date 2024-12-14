@@ -6,8 +6,8 @@ RUN npm install
 COPY . .
 RUN npm run build -- --configuration production
 
+
 # Stage 2: Serve the Angular app with Nginx
-FROM nginx:alpine
+FROM nginx:latest
 COPY --from=build /app/dist/angular-spa /usr/share/nginx/html
 EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
