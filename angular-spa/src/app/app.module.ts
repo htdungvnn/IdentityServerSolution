@@ -6,9 +6,11 @@ import {
 } from '@angular/platform-browser';
 
 import { provideHttpClient, withFetch } from '@angular/common/http';
-import { AuthModule, LogLevel } from 'angular-auth-oidc-client';
+import { AuthModule } from 'angular-auth-oidc-client';
+import { environment } from '../../environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 // ...
 @NgModule({
   declarations: [AppComponent],
@@ -17,21 +19,22 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     AuthModule.forRoot({
       config: {
-        authority: '<your authority address here>',
-        redirectUrl: 'localhost:4200',
-        postLogoutRedirectUri: 'localhost:4200',
-        clientId: '<your clientId>',
-        scope: 'openid profile email offline_access',
-        responseType: 'code',
-        silentRenew: true,
-        useRefreshToken: true,
-        logLevel: LogLevel.Debug,
+        authority: environment.identityServer.authority,
+        clientId: environment.identityServer.clientId,
+        redirectUrl: environment.identityServer.redirectUrl,
+        postLogoutRedirectUri: environment.identityServer.postLogoutRedirectUri,
+        responseType: environment.identityServer.responseType,
+        scope: environment.identityServer.scope,
+        silentRenew: environment.identityServer.silentRenew,
+        useRefreshToken: environment.identityServer.useRefreshToken,
+        secureRoutes: environment.identityServer.secureRoutes,
       },
     }),
   ],
   providers: [
     provideClientHydration(withEventReplay()),
     provideHttpClient(withFetch()),
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent],
 })

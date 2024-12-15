@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 
 @Component({
@@ -10,7 +10,7 @@ import { LoginResponse, OidcSecurityService } from 'angular-auth-oidc-client';
 export class AppComponent {
   title = 'angular-spa';
 
-  private readonly oidcSecurityService = inject(OidcSecurityService);
+  constructor(private oidcSecurityService: OidcSecurityService) {}
 
   ngOnInit() {
     this.oidcSecurityService
@@ -18,6 +18,7 @@ export class AppComponent {
       .subscribe((loginResponse: LoginResponse) => {
         const { isAuthenticated, userData, accessToken, idToken, configId } =
           loginResponse;
+        console.log(isAuthenticated, userData, accessToken, idToken, configId);
 
         /*...*/
       });
